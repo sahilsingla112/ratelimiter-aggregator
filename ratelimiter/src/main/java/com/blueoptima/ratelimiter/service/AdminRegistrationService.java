@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 public interface AdminRegistrationService {
 
 	ApiInfo update(ApiInfoUpdateReq updateReq) throws ApiInfoNotSavedException;
+	UserApiLimit update(UserRegistrationReq updateReq) throws ApiIdNotFoundException;
 	ApiRegistrationResp register(ApiRegistrationReq registrationReq) throws ApiRegistrationUnsuccessfulException;
 	UserRegistrationResp register(UserRegistrationReq userRegistrationReq) throws ApiIdNotFoundException;
 

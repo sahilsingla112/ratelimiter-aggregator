@@ -89,6 +89,14 @@ public class UserApiConfigServiceImpl implements UserApiConfigService {
 	}
 
 	@Override
+	public UserApiLimit saveUserApiInfo(UserApiKey userApiKey, Integer limit) throws ApiIdNotFoundException{
+
+		addUserApiInfo(userApiKey.getApiId(), userApiKey.getUserId(), limit);
+		UserApiLimit userApiLimit = new UserApiLimit(userApiKey, limit);
+		return userApiLimitRepository.save(userApiLimit);
+	}
+
+	@Override
 	public void addUserApiInfo(Long apiId, String userId, Integer limit) throws ApiIdNotFoundException{
 		final Optional<ApiInfo> byId = apiInfoRepository.findById(apiId);
 		if (!byId.isPresent()) {

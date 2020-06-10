@@ -59,4 +59,16 @@ public class AdminController {
 			return new ResponseEntity<>(new UserRegistrationResp(message), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
+	@PutMapping(value = "/user")
+	public ResponseEntity<UserApiLimit> update(@RequestBody UserRegistrationReq request){
+		try {
+			final UserApiLimit response = adminRegistrationService.update(request);
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		}catch (Exception e) {
+			String message = String.format("Error: Registration is unsuccessful. Possible cause: %s", e.getMessage());
+			LOGGER.error(message, e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }

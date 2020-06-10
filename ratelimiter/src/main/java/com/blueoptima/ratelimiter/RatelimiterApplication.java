@@ -53,12 +53,12 @@ public class RatelimiterApplication extends SpringBootServletInitializer impleme
 		ApiInfo saved = apiInfoRepository.save(apiInfo);
 		ApiInfo saved2 = apiInfoRepository.save(apiInfo2);
 
-		UserApiKey userApiKey = new UserApiKey("user1", saved.getId());
+		UserApiKey userApiKey = new UserApiKey("user1", saved3.getId());
 		UserApiKey userApiKey2 = new UserApiKey("user1", saved2.getId());
 		UserApiKey userApiKey3 = new UserApiKey("user2", saved.getId());
 		UserApiKey userApiKey4 = new UserApiKey("user2", saved2.getId());
 
-		UserApiLimit userApiLimit = new UserApiLimit(userApiKey, 10);
+		UserApiLimit userApiLimit = new UserApiLimit(userApiKey, 3);
 		UserApiLimit userApiLimit2 = new UserApiLimit(userApiKey2, 5);
 		UserApiLimit userApiLimit3 = new UserApiLimit(userApiKey3, 15);
 		UserApiLimit userApiLimit4 = new UserApiLimit(userApiKey4, 20);

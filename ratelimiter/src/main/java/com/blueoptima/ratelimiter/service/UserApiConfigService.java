@@ -3,6 +3,8 @@ package com.blueoptima.ratelimiter.service;
 import com.blueoptima.ratelimiter.exception.ApiIdNotFoundException;
 import com.blueoptima.ratelimiter.exception.ApiInfoNotSavedException;
 import com.blueoptima.ratelimiter.model.ApiInfo;
+import com.blueoptima.ratelimiter.model.UserApiKey;
+import com.blueoptima.ratelimiter.model.UserApiLimit;
 
 /**
  * @author Sahil Singla
@@ -18,6 +20,8 @@ public interface UserApiConfigService {
 	ApiInfo getApiInfo(String apiUri);
 
 	ApiInfo saveApiInfo(ApiInfo apiInfo) throws ApiInfoNotSavedException;
+
+	UserApiLimit saveUserApiInfo(UserApiKey userApiKey, Integer limit) throws ApiIdNotFoundException;
 
 	void addUserApiInfo(Long apiId, String userId, Integer limit) throws ApiIdNotFoundException;
 

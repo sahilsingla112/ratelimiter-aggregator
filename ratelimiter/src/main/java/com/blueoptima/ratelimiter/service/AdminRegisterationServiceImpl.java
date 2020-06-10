@@ -48,6 +48,12 @@ public class AdminRegisterationServiceImpl implements AdminRegistrationService{
 		return userApiConfigService.saveApiInfo(apiInfo);
 	}
 
+	@Override public UserApiLimit update(UserRegistrationReq updateReq) throws ApiIdNotFoundException {
+		UserApiKey userApiKey = new UserApiKey(updateReq.getUsername(), updateReq.getApiId());
+
+		return userApiConfigService.saveUserApiInfo(userApiKey, updateReq.getRateLimitPerMinute());
+	}
+
 	@Override public ApiRegistrationResp register(ApiRegistrationReq registrationReq) throws ApiRegistrationUnsuccessfulException{
 		try {
 			//Expectation is that the new route has been added to the Zuul Configuration
