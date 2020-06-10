@@ -1,17 +1,17 @@
-ratelimiter-aggregator
+# ratelimiter-aggregator
 
 Provides rate limiting features on edge serve (API gateway). It uses Netflix ZUUL from Sping cloud for API gateway.
 Provides an admin API to register a new underlying API and user without restarting the server.
 Please refer technical design document for more details on the architecture.
 
-It has the following modules:
+#### It has the following modules:
 
 Module1 -- Configuration service backed by git config file.  
 Module2 -- Exposes sample downstream services for test.
 Module3 -- API gateway which rate limits the calls to underlying services. 
 
 
-Things to install:
+## Things to install:
 
 1) Redis download (Tested on 3.2.100 version)
    For Windows, https://github.com/microsoftarchive/redis/releases
@@ -19,7 +19,7 @@ Things to install:
 2) Download gitbash.
 https://github.com/git-for-windows/git/releases
 
-Steps to run and test:
+## Steps to run and test:
 
 1) Extract ratelimiter-aggregator. Go inside ratelimiter-aggregator and run 'mvn clean install'
 
@@ -44,7 +44,7 @@ This is how the application will know from which user the request is coming.
 API limit exceeded! Request is rejected for /api/v1/books/available
 
 
-How to change the rate limit parameters of existing API:
+## How to change the rate limit parameters of existing API:
 
 These values are persisted in testdb/API_INFO and testdb/USER_API_INFO.
 
@@ -71,7 +71,7 @@ Password: password
 So, now the user1 and API of id =1 will have ratelimit updated to 5 requests/minute. 
 You can verify this without restart by executing step6).
 
-Setup Configuration server:
+## Setup Configuration server:
 
 This is not needed if you are not going to change Zuul configuration to add any new route (new underlying API). But if you wish to test that feature, you will need to perform the following steps:
 
@@ -86,7 +86,7 @@ spring.cloud.config.server.git.username=<yourusername>
 spring.cloud.config.server.git.password=<yourpassword>
 
 
-How to add a new API to the system without restart:
+## How to add a new API to the system without restart:
 
 1)	To add a new API, modify the ratelimiter-dev.properties and commit the changes to config-repo.
 	
@@ -126,7 +126,7 @@ Expected response:
 	"name": "Inferno"
 }
 
-Please add header 'userid: user1' in your POST request.
+**** Please add header 'userid: user1' in your POST request. ****
 
 If you repeat this more than the configured rate limit above. You will get this.
 	
