@@ -8,7 +8,6 @@ Please refer technical design document for more details on the architecture.
 
 Module1 -- Configuration service backed by git config file.  
 Module2 -- Exposes sample downstream services for test.
-
 Module3 -- API gateway which rate limits the calls to underlying services. 
 
 
