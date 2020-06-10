@@ -126,6 +126,8 @@ Expected response:
 	"name": "Inferno"
 }
 
+Please add header 'userid: user1' in your POST request.
+
 If you repeat this more than the configured rate limit above. You will get this.
 	
 API limit exceeded! Request is rejected for /api/v1/books/buy
