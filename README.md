@@ -16,21 +16,29 @@ Things to install:
 1) Redis download (Tested on 3.2.100 version)
    For Windows, https://github.com/microsoftarchive/redis/releases
 
-2) Python installation (Tested on 2.7.x)
-   https://www.python.org/downloads/release/python-2718/
-
+2) Download gitbash.
+https://github.com/git-for-windows/git/releases
 
 Steps to run and test:
 
 1) Extract ratelimiter-aggregator. Go inside ratelimiter-aggregator and run 'mvn clean install'
+
 2) Open another bash or gitbash terminal, cd configserver/ and execute ./start.sh. By default, it will run on port 8100
+Verify it by running http://localhost:8100/ratelimiter-dev.properties
+
 3) Open another bash or gitbash terminal, cd demo-service/ and execute ./start.sh. By default, it will run on port 8915
+Verify it by running http://localhost:8915/api/v1/books/available 
+You should see 'Spring in Action' 
 
 4) Open another bash or gitbash terminal, cd ratelimiter/ and execute ./start.sh. Be default, it will run on port 8910
 
 After all the modules are up and running in their own terminal:
 
-5) cd ratelimiter/ from the main terminal, execute ./curl_request.sh
+5) cd ratelimiter/ from the main terminal, execute ./curl_request.sh. 
+Monitor the logs on terminal. It should show the total hit count for the current window.
+
+In case, you are not using this script and hitting the test API from some other tool, add header 'userid: user1'
+This is how the application will know from which user the request is coming.
 
 6) Execute ./curl_request.sh multiple times, current limit is 3 requests/min. If you do this more than 3 in a minute, following message can be seen on the logs of ratelimiter terminal.
 API limit exceeded! Request is rejected for /api/v1/books/available
