@@ -77,7 +77,7 @@ This is not needed if you are not going to change Zuul configuration to add any 
 
 1)	To add any new API, you need to add a new route in Zuul configuration. All this is in a Configuration file which is stored in a Git repository.
 
-Log into your Github account. Create a new repository config-repo. Upload the file ratelimiter-aggregator/ratelimiter-dev.properties to this new repo. 
+Log into your Github account. Create a new repository config-repo. Copy the file ratelimiter-dev.properties from https://github.com/sahilsingla112/config-repo/ to this new repo. 
 		
 2)	Once you upload the updated file on your new git repository. Change the following configuration in src/main/application.properties of configserver module.
 
